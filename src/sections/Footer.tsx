@@ -36,18 +36,16 @@ const Footer = () => {
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
     { name: 'Our Orchard', href: '#vision' },
-    { name: 'Products', href: '#products' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
 
-  const products = [
-    { name: 'Honeycrisp', href: '#products' },
-    { name: 'Granny Smith', href: '#products' },
-    { name: 'Fuji', href: '#products' },
-    { name: 'Gala', href: '#products' },
-    { name: 'Red Delicious', href: '#products' },
-    { name: 'Pink Lady', href: '#products' },
+  const orchardLinks = [
+    { name: 'Our Vision', href: '#vision' },
+    { name: 'Our Mission', href: '#vision' },
+    { name: 'Our Values', href: '#vision' },
+    { name: 'Sustainability', href: '#vision' },
+    { name: 'Gallery', href: '#gallery' },
   ];
 
   const socialLinks = [
@@ -110,7 +108,6 @@ const Footer = () => {
             {/* Brand */}
             <div>
               <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-3 mb-6">
-                <img src="/images/hayat-logo.png" alt="Hayat HSC" className="h-10 w-auto" />
                 <div className="flex flex-col">
                   <span className="text-lg font-heading font-semibold text-white">Hayat HSC</span>
                   <span className="text-[9px] font-sans-elegant uppercase tracking-[0.25em] text-white/40">Premium Apple Farm</span>
@@ -152,19 +149,19 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Products */}
+            {/* Our Orchard */}
             <div>
-              <h4 className="text-white font-sans-elegant text-xs uppercase tracking-[0.2em] mb-6">Our Apples</h4>
+              <h4 className="text-white font-sans-elegant text-xs uppercase tracking-[0.2em] mb-6">Our Orchard</h4>
               <ul className="space-y-3">
-                {products.map((product) => (
-                  <li key={product.name}>
+                {orchardLinks.map((link) => (
+                  <li key={link.name}>
                     <a
-                      href={product.href}
-                      onClick={(e) => { e.preventDefault(); scrollToSection(product.href); }}
+                      href={link.href}
+                      onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
                       className="text-[var(--hayat-gray)] text-sm hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
                       <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                      {product.name}
+                      {link.name}
                     </a>
                   </li>
                 ))}
