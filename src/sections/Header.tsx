@@ -8,9 +8,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 50);
     };
-    
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -18,6 +17,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Our Orchard', href: '#vision' },
     { name: 'Products', href: '#products' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
@@ -33,56 +33,52 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'glass-effect shadow-lg py-3'
-          : 'bg-transparent py-5'
+          ? 'glass-effect shadow-elegant py-2'
+          : 'bg-transparent py-4'
       }`}
-      style={{ transitionTimingFunction: 'var(--ease-smooth-glide)' }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a 
-            href="#home" 
+          <a
+            href="#home"
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
-            className="flex items-center gap-2 group"
-            style={{
-              animation: 'flipIn 0.8s var(--ease-apple-bounce) forwards',
-            }}
+            className="flex items-center gap-3 group"
           >
             <img
               src="/images/hayat-logo.png"
               alt="Hayat HSC"
               className="h-10 w-auto"
             />
-            <span className={`text-xl font-bold font-['Poppins'] transition-colors duration-300 ${
-              isScrolled ? 'text-[var(--apple-black)]' : 'text-white'
-            }`}>
-              Hayat HSC
-            </span>
+            <div className="flex flex-col">
+              <span className={`text-xl font-heading font-semibold tracking-wide transition-colors duration-300 ${
+                isScrolled ? 'text-[var(--hayat-green-dark)]' : 'text-white'
+              }`}>
+                Hayat HSC
+              </span>
+              <span className={`text-[10px] font-sans-elegant uppercase tracking-[0.25em] transition-colors duration-300 ${
+                isScrolled ? 'text-[var(--hayat-gray)]' : 'text-white/70'
+              }`}>
+                Premium Apple Farm
+              </span>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                className={`relative text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 ${
-                  isScrolled ? 'text-[var(--apple-dark-gray)]' : 'text-white'
+                className={`relative text-sm font-sans-elegant font-medium uppercase tracking-[0.12em] transition-all duration-300 hover:opacity-80 ${
+                  isScrolled ? 'text-[var(--hayat-charcoal)]' : 'text-white'
                 }`}
-                style={{
-                  animation: `slideDown 0.5s var(--ease-smooth-glide) ${100 + index * 80}ms forwards`,
-                  opacity: 0,
-                }}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-[var(--apple-red)] transition-all duration-200 group-hover:w-full group-hover:left-0" 
-                  style={{ transform: 'translateX(-50%)' }}
-                />
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--apple-red)] transition-all duration-300 hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[var(--hayat-red)] transition-all duration-300 hover:w-full" />
               </a>
             ))}
           </nav>
@@ -91,17 +87,13 @@ const Header = () => {
           <div className="hidden lg:block">
             <Button
               onClick={() => scrollToSection('#contact')}
-              className={`gap-2 transition-all duration-300 hover:scale-105 ${
+              className={`gap-2 font-sans-elegant text-xs uppercase tracking-wider transition-all duration-300 rounded-none px-6 py-5 ${
                 isScrolled
-                  ? 'bg-gradient-red text-white hover:shadow-apple-lg'
-                  : 'bg-white text-[var(--apple-red)] hover:bg-white/90'
+                  ? 'bg-[var(--hayat-red)] text-white hover:bg-[var(--hayat-red-dark)]'
+                  : 'bg-white/10 text-white border border-white/30 hover:bg-white/20'
               }`}
-              style={{
-                animation: 'scaleIn 0.6s var(--ease-elastic-snap) 0.5s forwards',
-                opacity: 0,
-              }}
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-3.5 h-3.5" />
               Get a Quote
             </Button>
           </div>
@@ -109,8 +101,8 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${
-              isScrolled ? 'text-[var(--apple-black)]' : 'text-white'
+            className={`lg:hidden p-2 transition-colors duration-200 ${
+              isScrolled ? 'text-[var(--hayat-charcoal)]' : 'text-white'
             }`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -120,81 +112,30 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 glass-effect shadow-lg transition-all duration-400 ${
+        className={`lg:hidden absolute top-full left-0 right-0 glass-effect shadow-elegant-lg transition-all duration-400 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
-        style={{ transitionTimingFunction: 'var(--ease-smooth-glide)' }}
       >
-        <nav className="flex flex-col p-4 gap-2">
-          {navLinks.map((link, index) => (
+        <nav className="flex flex-col p-6 gap-1">
+          {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-              className="px-4 py-3 text-[var(--apple-dark-gray)] font-medium rounded-lg hover:bg-[var(--apple-light-gray)] transition-colors duration-200"
-              style={{
-                animation: isMobileMenuOpen ? `slideRight 0.3s var(--ease-smooth-glide) ${index * 80}ms forwards` : 'none',
-                opacity: 0,
-              }}
+              className="px-4 py-3 text-[var(--hayat-charcoal)] font-sans-elegant text-sm uppercase tracking-wider hover:text-[var(--hayat-red)] transition-colors duration-200"
             >
               {link.name}
             </a>
           ))}
           <Button
             onClick={() => scrollToSection('#contact')}
-            className="mt-2 bg-gradient-red text-white gap-2"
+            className="mt-4 bg-[var(--hayat-red)] text-white gap-2 rounded-none font-sans-elegant text-xs uppercase tracking-wider"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-3.5 h-3.5" />
             Get a Quote
           </Button>
         </nav>
       </div>
-
-      <style>{`
-        @keyframes flipIn {
-          from {
-            opacity: 0;
-            transform: perspective(400px) rotateY(-90deg);
-          }
-          to {
-            opacity: 1;
-            transform: perspective(400px) rotateY(0deg);
-          }
-        }
-        
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        
-        @keyframes slideRight {
-          from {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </header>
   );
 };

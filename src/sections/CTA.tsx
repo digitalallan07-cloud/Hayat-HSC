@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
+const CTA_IMAGE = 'https://drive.google.com/thumbnail?id=1Z7dlPiD2rxLML5KiSOm00Nr-VzY-CCZ2&sz=w1920';
+
 const CTA = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -16,145 +18,86 @@ const CTA = () => {
       },
       { threshold: 0.3 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-green relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='white'/%3E%3C/svg%3E")`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
-      
-      {/* Decorative Blobs */}
-      <div className="absolute -left-20 top-1/2 w-80 h-80 bg-white/10 rounded-full blur-3xl" />
-      <div className="absolute -right-20 bottom-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-      
+    <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url('${CTA_IMAGE}')` }}
+      />
+      <div className="absolute inset-0 bg-[var(--hayat-red-dark)]/80" />
+
       <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-white space-y-6">
-            {/* Eyebrow */}
-            <span 
-              className="inline-block text-white/80 font-semibold text-sm uppercase tracking-wider"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
-                transition: 'all 0.5s var(--ease-smooth-glide) 0.3s',
-              }}
-            >
-              Ready to Get Started?
-            </span>
-            
-            {/* Headline */}
-            <h2 className="text-4xl sm:text-5xl font-bold font-['Poppins'] leading-tight">
-              {"Let's Discuss Your Fresh Produce Needs".split(' ').map((word, index) => (
-                <span
-                  key={index}
-                  className="inline-block mr-3"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-                    transition: `all 0.6s var(--ease-power-out) ${0.4 + index * 0.1}s`,
-                  }}
-                >
-                  {word}
-                </span>
-              ))}
-            </h2>
-            
-            {/* Body */}
-            <p 
-              className="text-lg text-white/90 max-w-xl leading-relaxed"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                filter: isVisible ? 'blur(0)' : 'blur(5px)',
-                transition: 'all 0.6s var(--ease-smooth-glide) 0.7s',
-              }}
-            >
-              Whether you're looking for wholesale supply, export services, or custom packaging, 
-              we're here to help. Contact us today for a personalized quote.
-            </p>
-            
-            {/* CTA Buttons */}
-            <div 
-              className="flex flex-wrap gap-4 pt-4"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0)',
-                transition: 'all 0.6s var(--ease-elastic-snap) 0.9s',
-              }}
-            >
-              <Button
-                size="lg"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-[var(--apple-green)] hover:bg-white/90 gap-2 px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl group"
-              >
-                Get Your Free Quote
-                <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
-              </Button>
-              
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => window.open('https://wa.me/97152898823', '_blank')}
-                className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 gap-2 px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300"
-              >
-                <Phone className="w-5 h-5" />
-                WhatsApp Us
-              </Button>
-            </div>
-          </div>
-          
-          {/* Right - Image */}
-          <div 
-            className="relative flex justify-center lg:justify-end"
+        <div className="max-w-3xl mx-auto text-center text-white space-y-8">
+          <span
+            className="inline-block text-[var(--hayat-gold-light)] font-sans-elegant text-xs uppercase tracking-[0.3em]"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'rotateY(0deg) translateX(0)' : 'rotateY(30deg) translateX(100px)',
-              transition: 'all 0.8s var(--ease-apple-bounce) 0.4s',
+              transition: 'opacity 0.6s var(--ease-power) 0.2s',
             }}
           >
-            <div className="relative animate-float">
-              <img
-                src="/images/cta-apples.png"
-                alt="Fresh Apples"
-                className="w-full max-w-md drop-shadow-2xl"
-              />
-              
-              {/* Floating Badge */}
-              <div 
-                className="absolute -top-4 -left-4 bg-white rounded-2xl p-4 shadow-xl animate-float-slow"
-                style={{ animationDelay: '-1s' }}
-              >
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-[var(--apple-green)]">24/7</p>
-                  <p className="text-xs text-[var(--apple-medium-gray)]">Support</p>
-                </div>
-              </div>
-              
-              {/* Floating Badge 2 */}
-              <div 
-                className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl animate-float"
-                style={{ animationDelay: '-2s' }}
-              >
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-[var(--apple-red)]">Free</p>
-                  <p className="text-xs text-[var(--apple-medium-gray)]">Shipping</p>
-                </div>
-              </div>
-            </div>
+            Get In Touch
+          </span>
+
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-heading leading-tight"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s var(--ease-power) 0.3s',
+            }}
+          >
+            Let&apos;s Discuss Your{' '}
+            <span className="italic">Fresh Produce</span> Needs
+          </h2>
+
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+            <div className="w-2 h-2 bg-[var(--hayat-gold)] rounded-full" />
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+          </div>
+
+          <p
+            className="text-lg text-white/85 max-w-xl mx-auto leading-relaxed"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transition: 'opacity 0.6s var(--ease-power) 0.5s',
+            }}
+          >
+            Whether you need wholesale supply, export services, or custom packaging,
+            our team is ready to craft the perfect solution for your business.
+          </p>
+
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.8s var(--ease-power) 0.7s',
+            }}
+          >
+            <Button
+              size="lg"
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white text-[var(--hayat-red)] hover:bg-white/90 gap-2 px-10 py-6 text-sm font-sans-elegant uppercase tracking-[0.15em] rounded-none transition-all duration-300 hover:shadow-lg group"
+            >
+              Request a Quote
+              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => window.open('https://wa.me/97152898823', '_blank')}
+              className="border border-white/40 text-white hover:bg-white/10 gap-2 px-10 py-6 text-sm font-sans-elegant uppercase tracking-[0.15em] rounded-none transition-all duration-300 bg-transparent"
+            >
+              <Phone className="w-4 h-4" />
+              WhatsApp Us
+            </Button>
           </div>
         </div>
       </div>

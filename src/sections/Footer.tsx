@@ -19,11 +19,7 @@ const Footer = () => {
       },
       { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -39,7 +35,8 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
-    { name: 'Our Products', href: '#products' },
+    { name: 'Our Orchard', href: '#vision' },
+    { name: 'Products', href: '#products' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -50,6 +47,7 @@ const Footer = () => {
     { name: 'Fuji', href: '#products' },
     { name: 'Gala', href: '#products' },
     { name: 'Red Delicious', href: '#products' },
+    { name: 'Pink Lady', href: '#products' },
   ];
 
   const socialLinks = [
@@ -68,214 +66,129 @@ const Footer = () => {
 
   return (
     <footer id="contact" ref={sectionRef} className="relative">
-      {/* Newsletter Section */}
-      <div 
-        className="bg-gradient-red py-16 relative overflow-hidden"
+      {/* Newsletter */}
+      <div
+        className="bg-[var(--hayat-green-dark)] py-16"
         style={{
           opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-          transition: 'all 0.6s var(--ease-smooth-glide)',
+          transition: 'opacity 0.6s var(--ease-power)',
         }}
       >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 5c-5 0-10 5-10 10 0 3 1 5 3 7-2 1-4 3-4 6 0 4 3 7 7 7h8c4 0 7-3 7-7 0-3-2-5-4-6 2-2 3-4 3-7 0-5-5-10-10-10z' fill='white'/%3E%3C/svg%3E")`,
-              backgroundSize: '50px 50px',
-            }}
-          />
-        </div>
-        
-        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 
-              className="text-3xl sm:text-4xl font-bold text-white mb-4"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'all 0.5s var(--ease-smooth-glide) 0.2s',
-              }}
-            >
-              Stay Fresh with Our Newsletter
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-3xl sm:text-4xl font-heading text-white mb-3">
+              Stay Connected
             </h3>
-            <p 
-              className="text-white/80 mb-8"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'all 0.5s var(--ease-smooth-glide) 0.3s',
-              }}
-            >
-              Get updates on new products, seasonal specials, and industry news.
+            <p className="text-white/60 font-sans-elegant text-sm mb-8">
+              Subscribe to receive updates on seasonal harvests, new products, and exclusive offers.
             </p>
-            
-            <form 
-              onSubmit={handleSubscribe}
-              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transition: 'opacity 0.4s var(--ease-smooth-glide) 0.4s',
-              }}
-            >
-              <div className="flex-1 relative">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-6 py-6 rounded-full bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20 focus:border-white/40 transition-all duration-200"
-                  required
-                />
-              </div>
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 px-6 py-6 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/15 focus:border-white/30 rounded-none font-sans-elegant text-sm"
+                required
+              />
               <Button
                 type="submit"
-                className="bg-[var(--apple-black)] text-white hover:bg-[var(--apple-dark-gray)] gap-2 px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 group"
+                className="bg-[var(--hayat-red)] text-white hover:bg-[var(--hayat-red-dark)] gap-2 px-8 py-6 rounded-none font-sans-elegant text-xs uppercase tracking-wider transition-all duration-300"
               >
-                {isSubscribed ? 'Subscribed!' : 'Subscribe'}
-                <Send className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                {isSubscribed ? 'Subscribed' : 'Subscribe'}
+                <Send className="w-3.5 h-3.5" />
               </Button>
             </form>
           </div>
         </div>
       </div>
-      
+
       {/* Main Footer */}
-      <div className="bg-[var(--apple-black)] py-16">
+      <div className="bg-[var(--hayat-dark)] py-16">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {/* Brand Column */}
-            <div
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0.8)',
-                transition: 'all 0.5s var(--ease-apple-bounce) 0.4s',
-              }}
-            >
-              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 mb-6">
-                <img
-                  src="/images/hayat-logo.png"
-                  alt="Hayat HSC"
-                  className="h-10 w-auto"
-                />
-                <span className="text-xl font-bold text-white font-['Poppins']">Hayat HSC</span>
+            {/* Brand */}
+            <div>
+              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-3 mb-6">
+                <img src="/images/hayat-logo.png" alt="Hayat HSC" className="h-10 w-auto" />
+                <div className="flex flex-col">
+                  <span className="text-lg font-heading font-semibold text-white">Hayat HSC</span>
+                  <span className="text-[9px] font-sans-elegant uppercase tracking-[0.25em] text-white/40">Premium Apple Farm</span>
+                </div>
               </a>
-              <p className="text-[var(--apple-medium-gray)] mb-6 leading-relaxed">
-                Your trusted partner for premium fresh fruits and vegetables. Quality, freshness, and reliability in every delivery.
+              <p className="text-[var(--hayat-gray)] text-sm leading-relaxed mb-6">
+                Your trusted partner for premium quality apples. From our orchards to your table, we deliver excellence in every harvest.
               </p>
-              
-              {/* Social Links */}
               <div className="flex gap-3">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[var(--apple-red)] hover:scale-110 hover:rotate-[10deg] transition-all duration-200"
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'scale(1)' : 'scale(0)',
-                      transition: `all 0.4s var(--ease-elastic-snap) ${0.6 + index * 0.1}s`,
-                    }}
+                    className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/50 hover:bg-[var(--hayat-red)] hover:border-[var(--hayat-red)] hover:text-white transition-all duration-200"
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-4 h-4" />
                   </a>
                 ))}
               </div>
             </div>
-            
+
             {/* Quick Links */}
             <div>
-              <h4 className="text-white font-bold mb-6">Quick Links</h4>
+              <h4 className="text-white font-sans-elegant text-xs uppercase tracking-[0.2em] mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <li 
-                    key={link.name}
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                      transition: `all 0.3s var(--ease-smooth-glide) ${0.5 + index * 0.08}s`,
-                    }}
-                  >
+                {quickLinks.map((link) => (
+                  <li key={link.name}>
                     <a
                       href={link.href}
                       onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                      className="text-[var(--apple-medium-gray)] hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1 group"
+                      className="text-[var(--hayat-gray)] text-sm hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
-                      <ArrowRight className="w-4 h-4 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
+                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {link.name}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            
+
             {/* Products */}
             <div>
-              <h4 className="text-white font-bold mb-6">Products</h4>
+              <h4 className="text-white font-sans-elegant text-xs uppercase tracking-[0.2em] mb-6">Our Apples</h4>
               <ul className="space-y-3">
-                {products.map((product, index) => (
-                  <li 
-                    key={product.name}
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                      transition: `all 0.3s var(--ease-smooth-glide) ${0.5 + index * 0.08}s`,
-                    }}
-                  >
+                {products.map((product) => (
+                  <li key={product.name}>
                     <a
                       href={product.href}
                       onClick={(e) => { e.preventDefault(); scrollToSection(product.href); }}
-                      className="text-[var(--apple-medium-gray)] hover:text-white hover:translate-x-1 transition-all duration-200 inline-flex items-center gap-1 group"
+                      className="text-[var(--hayat-gray)] text-sm hover:text-white transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
-                      <ArrowRight className="w-4 h-4 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
+                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                       {product.name}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-            
+
             {/* Contact */}
             <div>
-              <h4 className="text-white font-bold mb-6">Contact Us</h4>
+              <h4 className="text-white font-sans-elegant text-xs uppercase tracking-[0.2em] mb-6">Contact Us</h4>
               <ul className="space-y-4">
-                <li
-                  className="flex items-start gap-3 text-[var(--apple-medium-gray)]"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'all 0.3s var(--ease-smooth-glide) 0.5s',
-                  }}
-                >
-                  <MapPin className="w-5 h-5 text-[var(--apple-red)] flex-shrink-0 mt-0.5" />
+                <li className="flex items-start gap-3 text-[var(--hayat-gray)] text-sm">
+                  <MapPin className="w-4 h-4 text-[var(--hayat-red)] flex-shrink-0 mt-0.5" />
                   <a href="https://maps.app.goo.gl/ppSyLhxh3uJ1K7KW6?g_st=iwb" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">
                     View on Google Maps
                   </a>
                 </li>
-                <li
-                  className="flex items-center gap-3 text-[var(--apple-medium-gray)]"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'all 0.3s var(--ease-smooth-glide) 0.58s',
-                  }}
-                >
-                  <MessageCircle className="w-5 h-5 text-[var(--apple-green)] flex-shrink-0" />
+                <li className="flex items-center gap-3 text-[var(--hayat-gray)] text-sm">
+                  <MessageCircle className="w-4 h-4 text-[var(--hayat-green-light)] flex-shrink-0" />
                   <a href="https://wa.me/97152898823" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">
                     +97152-8988232
                   </a>
                 </li>
-                <li
-                  className="flex items-center gap-3 text-[var(--apple-medium-gray)]"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-                    transition: 'all 0.3s var(--ease-smooth-glide) 0.66s',
-                  }}
-                >
-                  <Mail className="w-5 h-5 text-[var(--apple-red)] flex-shrink-0" />
+                <li className="flex items-center gap-3 text-[var(--hayat-gray)] text-sm">
+                  <Mail className="w-4 h-4 text-[var(--hayat-red)] flex-shrink-0" />
                   <a href="mailto:Hello@hayathsc.com" className="hover:text-white transition-colors duration-200">
                     Hello@hayathsc.com
                   </a>
@@ -283,23 +196,17 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          
-          {/* Copyright Bar */}
-          <div 
-            className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.4s var(--ease-smooth-glide) 0.8s',
-            }}
-          >
-            <p className="text-[var(--apple-medium-gray)] text-sm">
-              © 2024 Hayat HSC. All rights reserved.
+
+          {/* Copyright */}
+          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-[var(--hayat-gray)] text-xs font-sans-elegant">
+              &copy; 2025 Hayat HSC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-[var(--apple-medium-gray)] text-sm hover:text-white transition-colors duration-200">
+              <a href="#" className="text-[var(--hayat-gray)] text-xs font-sans-elegant hover:text-white transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-[var(--apple-medium-gray)] text-sm hover:text-white transition-colors duration-200">
+              <a href="#" className="text-[var(--hayat-gray)] text-xs font-sans-elegant hover:text-white transition-colors duration-200">
                 Terms of Service
               </a>
             </div>
