@@ -16,19 +16,14 @@ const Testimonials = () => {
       },
       { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
@@ -56,149 +51,113 @@ const Testimonials = () => {
     },
   ];
 
-  const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const nextTestimonial = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  const prevTestimonial = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[var(--apple-off-white)] relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-[var(--apple-red)]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-64 h-64 bg-[var(--apple-green)]/5 rounded-full blur-3xl" />
-      
-      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20 relative z-10">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 
-            className="text-4xl sm:text-5xl font-bold font-['Poppins'] text-[var(--apple-black)] mb-4"
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span
+            className="inline-block text-[var(--hayat-gold)] font-sans-elegant text-xs uppercase tracking-[0.25em] mb-4"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transition: 'opacity 0.6s var(--ease-power)',
+            }}
+          >
+            Testimonials
+          </span>
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-heading text-[var(--hayat-charcoal)]"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 0.6s var(--ease-smooth-glide)',
+              transition: 'all 0.8s var(--ease-power) 0.1s',
             }}
           >
-            What Our Clients Say
+            What Our <span className="italic text-[var(--hayat-green)]">Clients Say</span>
           </h2>
-          <div 
-            className="w-24 h-1 bg-gradient-red mx-auto rounded-full"
-            style={{
-              transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-              transition: 'transform 0.5s var(--ease-power-out) 0.3s',
-            }}
-          />
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+            <div className="w-2 h-2 bg-[var(--hayat-gold)] rounded-full" />
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+          </div>
         </div>
-        
-        {/* Testimonials Carousel */}
-        <div 
+
+        {/* Testimonial Card */}
+        <div
           className="relative max-w-4xl mx-auto"
           style={{
             opacity: isVisible ? 1 : 0,
-            transition: 'opacity 0.8s var(--ease-smooth-glide) 0.2s',
+            transition: 'opacity 0.8s var(--ease-power) 0.3s',
           }}
         >
-          {/* Main Card */}
-          <div 
-            className="relative bg-white rounded-3xl p-8 sm:p-12 shadow-xl"
-            style={{ perspective: '1000px' }}
-          >
+          <div className="relative bg-[var(--hayat-cream)] p-10 sm:p-14">
             {/* Quote Icon */}
-            <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-red rounded-xl flex items-center justify-center shadow-lg">
-              <Quote className="w-6 h-6 text-white" />
+            <div className="absolute -top-5 left-10 w-10 h-10 bg-[var(--hayat-red)] flex items-center justify-center">
+              <Quote className="w-5 h-5 text-white" />
             </div>
-            
-            {/* Testimonial Content */}
-            <div className="pt-4">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.name}
-                  className={`transition-all duration-500 ${
-                    index === activeIndex 
-                      ? 'opacity-100 visible' 
-                      : 'opacity-0 invisible absolute inset-0'
-                  }`}
-                  style={{
-                    transform: index === activeIndex ? 'rotateY(0deg)' : 'rotateY(-45deg)',
-                    transitionTimingFunction: 'var(--ease-smooth-glide)',
-                  }}
-                >
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  
-                  {/* Quote */}
-                  <p className="text-xl sm:text-2xl text-[var(--apple-dark-gray)] leading-relaxed mb-8">
-                    "{testimonial.content}"
-                  </p>
-                  
-                  {/* Author */}
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-14 h-14 rounded-full object-cover border-2 border-[var(--apple-red)]/20"
-                    />
-                    <div>
-                      <p className="font-bold text-[var(--apple-black)]">{testimonial.name}</p>
-                      <p className="text-sm text-[var(--apple-medium-gray)]">{testimonial.role}</p>
-                    </div>
+
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.name}
+                className={`transition-all duration-500 ${
+                  index === activeIndex ? 'opacity-100 visible' : 'opacity-0 invisible absolute inset-0 p-10 sm:p-14'
+                }`}
+              >
+                {/* Rating */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[var(--hayat-gold)] text-[var(--hayat-gold)]" />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-xl sm:text-2xl font-heading text-[var(--hayat-charcoal)] leading-relaxed mb-8 italic">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 object-cover border border-[var(--hayat-light-gray)]"
+                  />
+                  <div>
+                    <p className="font-sans-elegant font-semibold text-sm text-[var(--hayat-charcoal)] uppercase tracking-wider">{testimonial.name}</p>
+                    <p className="text-xs text-[var(--hayat-gray)] font-sans-elegant">{testimonial.role}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-          
+
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            {/* Prev Button */}
+          <div className="flex items-center justify-center gap-6 mt-8">
             <button
               onClick={prevTestimonial}
-              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-[var(--apple-dark-gray)] hover:bg-[var(--apple-red)] hover:text-white transition-all duration-200 hover:scale-110"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0)',
-                transition: 'all 0.4s var(--ease-elastic-snap) 0.8s',
-              }}
+              className="w-10 h-10 border border-[var(--hayat-light-gray)] flex items-center justify-center text-[var(--hayat-gray)] hover:bg-[var(--hayat-red)] hover:border-[var(--hayat-red)] hover:text-white transition-all duration-200"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
-            
-            {/* Dots */}
             <div className="flex gap-2">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === activeIndex 
-                      ? 'bg-[var(--apple-red)] w-8' 
-                      : 'bg-[var(--apple-medium-gray)]/30 hover:bg-[var(--apple-medium-gray)]/50'
+                  className={`h-[2px] transition-all duration-300 ${
+                    index === activeIndex ? 'bg-[var(--hayat-red)] w-8' : 'bg-[var(--hayat-light-gray)] w-4'
                   }`}
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transition: `opacity 0.3s var(--ease-smooth-glide) ${0.9 + index * 0.1}s`,
-                  }}
                 />
               ))}
             </div>
-            
-            {/* Next Button */}
             <button
               onClick={nextTestimonial}
-              className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center text-[var(--apple-dark-gray)] hover:bg-[var(--apple-red)] hover:text-white transition-all duration-200 hover:scale-110"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0)',
-                transition: 'all 0.4s var(--ease-elastic-snap) 0.8s',
-              }}
+              className="w-10 h-10 border border-[var(--hayat-light-gray)] flex items-center justify-center text-[var(--hayat-gray)] hover:bg-[var(--hayat-red)] hover:border-[var(--hayat-red)] hover:text-white transition-all duration-200"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>

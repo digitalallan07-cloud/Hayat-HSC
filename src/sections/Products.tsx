@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Products = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -15,11 +15,7 @@ const Products = () => {
       },
       { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -27,147 +23,124 @@ const Products = () => {
     {
       name: 'Honeycrisp',
       tag: 'Best Seller',
-      description: 'Exceptionally crisp and juicy with a perfect sweet-tart balance',
+      description: 'Exceptionally crisp and juicy with a perfect sweet-tart balance that makes it a favorite worldwide.',
       image: '/images/apple-honeycrisp.jpg',
-      color: 'from-red-500 to-red-600',
     },
     {
       name: 'Granny Smith',
       tag: 'Tart Favorite',
-      description: 'Bright green skin with a sharp, refreshing tart flavor',
+      description: 'Bright green skin with a sharp, refreshing tart flavor ideal for baking and fresh eating.',
       image: '/images/apple-granny.jpg',
-      color: 'from-green-500 to-green-600',
     },
     {
       name: 'Fuji',
       tag: 'Super Sweet',
-      description: 'Incredibly sweet with dense, crunchy flesh',
+      description: 'Incredibly sweet with dense, crunchy flesh — a true crowd-pleaser for all occasions.',
       image: '/images/apple-fuji.jpg',
-      color: 'from-red-400 to-red-500',
     },
     {
       name: 'Gala',
       tag: 'All Purpose',
-      description: 'Mildly sweet and perfect for snacking or cooking',
+      description: 'Mildly sweet and aromatic, perfect for snacking, salads, or pairing with cheese.',
       image: '/images/apple-gala.jpg',
-      color: 'from-orange-400 to-red-400',
     },
     {
       name: 'Red Delicious',
       tag: 'Classic',
-      description: "America's favorite with deep red color and mild sweetness",
+      description: 'The iconic deep red apple with mild sweetness and a satisfying crisp texture.',
       image: '/images/apple-red-delicious.jpg',
-      color: 'from-red-600 to-red-700',
     },
     {
       name: 'Pink Lady',
       tag: 'Premium',
-      description: 'Elegant blush skin with complex sweet-tart flavor',
+      description: 'Elegant blush skin with a complex sweet-tart flavor profile and firm, fine-grained flesh.',
       image: '/images/apple-pink-lady.jpg',
-      color: 'from-pink-400 to-red-400',
     },
   ];
 
   return (
-    <section id="products" ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-[var(--apple-red)]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-[var(--apple-green)]/5 rounded-full blur-3xl" />
-      
-      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20 relative z-10">
+    <section id="products" ref={sectionRef} className="py-24 lg:py-32 bg-white relative overflow-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
-          <div>
-            <h2 
-              className="text-4xl sm:text-5xl font-bold font-['Poppins'] text-[var(--apple-black)] mb-4"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                transition: 'all 0.6s var(--ease-smooth-glide)',
-              }}
-            >
-              Our Products
-            </h2>
-            <p 
-              className="text-lg text-[var(--apple-medium-gray)] max-w-xl"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'all 0.6s var(--ease-smooth-glide) 0.1s',
-              }}
-            >
-              Discover premium fresh produce for every need
-            </p>
-          </div>
-          
-          <a 
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="inline-flex items-center gap-2 text-[var(--apple-red)] font-semibold hover:gap-3 transition-all duration-200 group"
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span
+            className="inline-block text-[var(--hayat-gold)] font-sans-elegant text-xs uppercase tracking-[0.25em] mb-4"
             style={{
               opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.4s var(--ease-smooth-glide) 0.3s',
+              transition: 'opacity 0.6s var(--ease-power)',
             }}
           >
-            View All Products
-            <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </a>
+            Our Harvest
+          </span>
+          <h2
+            className="text-4xl sm:text-5xl lg:text-6xl font-heading text-[var(--hayat-charcoal)] mb-6"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s var(--ease-power) 0.1s',
+            }}
+          >
+            Premium Apple <span className="italic text-[var(--hayat-red)]">Varieties</span>
+          </h2>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+            <div className="w-2 h-2 bg-[var(--hayat-gold)] rounded-full" />
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+          </div>
+          <p
+            className="text-[var(--hayat-gray)] text-base leading-relaxed"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transition: 'opacity 0.6s var(--ease-power) 0.2s',
+            }}
+          >
+            Each variety is hand-selected and harvested at peak ripeness, ensuring the finest flavor and quality reach your table.
+          </p>
         </div>
-        
+
         {/* Products Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <div
               key={product.name}
-              className="group relative bg-[var(--apple-off-white)] rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2"
+              className="group relative bg-white border border-[var(--hayat-light-gray)] hover:border-[var(--hayat-red)]/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-card-hover overflow-hidden"
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0.9)',
-                transition: `all 0.5s var(--ease-apple-bounce) ${0.1 + index * 0.1}s`,
+                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                transition: `all 0.6s var(--ease-power) ${0.2 + index * 0.08}s`,
               }}
             >
-              {/* Image Container */}
+              {/* Image */}
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 {/* Tag */}
-                <div className={`absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r ${product.color} text-white text-xs font-semibold flex items-center gap-1`}>
-                  <Star className="w-3 h-3" />
+                <div className="absolute top-4 left-4 px-3 py-1.5 bg-white/95 text-[var(--hayat-charcoal)] text-[10px] font-sans-elegant uppercase tracking-[0.15em]">
                   {product.tag}
                 </div>
-                
-                {/* Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
+
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold font-['Poppins'] text-[var(--apple-black)] mb-2">
+                <h3 className="text-2xl font-heading font-semibold text-[var(--hayat-charcoal)] mb-2">
                   {product.name}
                 </h3>
-                <p className="text-[var(--apple-medium-gray)] text-sm leading-relaxed">
+                <p className="text-sm text-[var(--hayat-gray)] leading-relaxed mb-4">
                   {product.description}
                 </p>
-                
-                {/* CTA */}
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <a 
-                    href="#contact"
-                    onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-                    className="inline-flex items-center gap-2 text-[var(--apple-red)] font-semibold text-sm hover:gap-3 transition-all duration-200 group/link"
-                  >
-                    Order Now
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1" />
-                  </a>
-                </div>
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  className="inline-flex items-center gap-2 text-[var(--hayat-red)] font-sans-elegant text-xs uppercase tracking-[0.12em] font-medium hover:gap-3 transition-all duration-200 group/link"
+                >
+                  Inquire Now
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
+                </a>
               </div>
-              
-              {/* Bottom Accent Line */}
-              <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${product.color} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
             </div>
           ))}
         </div>

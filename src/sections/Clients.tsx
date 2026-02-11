@@ -14,61 +14,52 @@ const Clients = () => {
       },
       { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
-      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20 relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+    <section ref={sectionRef} className="py-24 bg-[var(--hayat-cream)] relative overflow-hidden">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span
+            className="inline-block text-[var(--hayat-gold)] font-sans-elegant text-xs uppercase tracking-[0.25em] mb-4"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transition: 'opacity 0.6s var(--ease-power)',
+            }}
+          >
+            Trusted Partners
+          </span>
           <h2
-            className="text-4xl sm:text-5xl font-bold font-['Poppins'] text-[var(--apple-black)] mb-4"
+            className="text-4xl sm:text-5xl font-heading text-[var(--hayat-charcoal)]"
             style={{
               opacity: isVisible ? 1 : 0,
-              clipPath: isVisible ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
-              transition: 'all 0.8s var(--ease-smooth-glide)',
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s var(--ease-power) 0.1s',
             }}
           >
-            Our Clients
+            Our Valued <span className="italic text-[var(--hayat-green)]">Clients</span>
           </h2>
-          <p
-            className="text-lg text-[var(--apple-medium-gray)]"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.6s var(--ease-smooth-glide) 0.2s',
-            }}
-          >
-            Trusted by leading businesses worldwide
-          </p>
-          <div
-            className="w-24 h-1 bg-gradient-red mx-auto mt-6 rounded-full"
-            style={{
-              transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-              transition: 'transform 0.5s var(--ease-power-out) 0.4s',
-            }}
-          />
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+            <div className="w-2 h-2 bg-[var(--hayat-gold)] rounded-full" />
+            <div className="w-16 h-[1px] bg-[var(--hayat-gold)]" />
+          </div>
         </div>
 
-        {/* Client Collage Image */}
         <div
           className="max-w-4xl mx-auto"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'scale(1)' : 'scale(0.9)',
-            transition: 'all 0.8s var(--ease-apple-bounce) 0.3s',
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.8s var(--ease-power) 0.3s',
           }}
         >
           <img
             src="/images/clients-collage.png"
-            alt="Our Clients"
-            className="w-full rounded-3xl shadow-xl"
+            alt="Our Trusted Clients"
+            className="w-full shadow-elegant"
           />
         </div>
       </div>
