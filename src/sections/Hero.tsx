@@ -97,7 +97,10 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden bg-gradient-hero">
+    <section id="home" className="relative min-h-screen overflow-hidden bg-gradient-hero" style={{ backgroundImage: 'url(/images/cover.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-black/50" style={{ zIndex: 0 }} />
+
       {/* Animated Background Canvas */}
       <canvas
         ref={canvasRef}
@@ -146,9 +149,9 @@ const Hero = () => {
                     transition: 'all 0.8s var(--ease-power-out) 0.4s',
                   }}
                 >
-                  Nature's Perfect
+                  Fresh From
                 </h1>
-                <h1 
+                <h1
                   className="text-5xl sm:text-6xl lg:text-7xl font-bold font-['Poppins'] leading-tight"
                   style={{
                     opacity: isVisible ? 1 : 0,
@@ -156,9 +159,9 @@ const Hero = () => {
                     transition: 'all 0.8s var(--ease-power-out) 0.55s',
                   }}
                 >
-                  Snack,
+                  Farm,
                 </h1>
-                <h1 
+                <h1
                   className="text-5xl sm:text-6xl lg:text-7xl font-bold font-['Poppins'] leading-tight text-[var(--apple-green-light)]"
                   style={{
                     opacity: isVisible ? 1 : 0,
@@ -179,8 +182,8 @@ const Hero = () => {
                   transition: 'all 0.6s var(--ease-smooth-glide) 0.9s',
                 }}
               >
-                Premium apples sourced from the finest orchards worldwide. 
-                From farm to table, we deliver crisp, juicy perfection every time.
+                Premium fresh fruits and vegetables sourced from the finest farms worldwide.
+                From farm to table, we deliver quality and freshness every time.
               </p>
               
               {/* CTA Buttons */}

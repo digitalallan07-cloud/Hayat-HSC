@@ -48,7 +48,7 @@ const About = () => {
   const stats = [
     { icon: Award, value: counters.years, suffix: '+', label: 'Years of Excellence' },
     { icon: Globe, value: counters.countries, suffix: '+', label: 'Countries Served' },
-    { icon: Apple, value: counters.apples, suffix: 'M+', label: 'Apples Delivered' },
+    { icon: Apple, value: counters.apples, suffix: 'M+', label: 'Products Delivered' },
   ];
 
   return (
@@ -122,7 +122,7 @@ const About = () => {
                 transition: 'all 0.4s var(--ease-smooth-glide) 0.3s',
               }}
             >
-              About AppleKing
+              About Hayat HSC
             </span>
             
             {/* Headline */}
@@ -152,8 +152,8 @@ const About = () => {
                   transition: 'all 0.6s var(--ease-smooth-glide) 0.7s',
                 }}
               >
-                Founded in 2003, AppleKing has grown from a small family orchard to a leading 
-                global apple distributor. Our commitment to quality, sustainability, and customer 
+                Founded with a vision to deliver the freshest produce, Hayat HSC has grown into a leading
+                supplier of premium fresh fruits and vegetables. Our commitment to quality, sustainability, and customer
                 satisfaction drives everything we do.
               </p>
               <p 
@@ -164,9 +164,9 @@ const About = () => {
                   transition: 'all 0.6s var(--ease-smooth-glide) 0.85s',
                 }}
               >
-                We partner with the finest orchards across Washington, New Zealand, Chile, and 
-                Italy to bring you apples that meet our exacting standards. Every apple is 
-                hand-selected, carefully inspected, and delivered with the care it deserves.
+                We partner with the finest farms and orchards worldwide to bring you fresh produce
+                that meets our exacting standards. Every item is carefully selected, inspected,
+                and delivered with the care it deserves.
               </p>
             </div>
             

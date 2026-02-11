@@ -71,7 +71,7 @@ const Services = () => {
               transition: 'all 0.6s var(--ease-smooth-glide) 0.2s',
             }}
           >
-            Comprehensive apple solutions tailored to your needs
+            Comprehensive fresh produce solutions tailored to your needs
           </p>
           <div 
             className="w-24 h-1 bg-gradient-red mx-auto mt-6 rounded-full"

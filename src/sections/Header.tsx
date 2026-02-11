@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Apple, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -51,15 +51,15 @@ const Header = () => {
               animation: 'flipIn 0.8s var(--ease-apple-bounce) forwards',
             }}
           >
-            <div className={`p-2 rounded-xl transition-all duration-300 ${
-              isScrolled ? 'bg-gradient-red' : 'bg-white/20'
-            }`}>
-              <Apple className={`w-6 h-6 ${isScrolled ? 'text-white' : 'text-white'}`} />
-            </div>
+            <img
+              src="/images/hayat-logo.png"
+              alt="Hayat HSC"
+              className="h-10 w-auto"
+            />
             <span className={`text-xl font-bold font-['Poppins'] transition-colors duration-300 ${
               isScrolled ? 'text-[var(--apple-black)]' : 'text-white'
             }`}>
-              AppleKing
+              Hayat HSC
             </span>
           </a>
 

@@ -59,7 +59,7 @@ const CTA = () => {
             
             {/* Headline */}
             <h2 className="text-4xl sm:text-5xl font-bold font-['Poppins'] leading-tight">
-              {"Let's Discuss Your Apple Needs".split(' ').map((word, index) => (
+              {"Let's Discuss Your Fresh Produce Needs".split(' ').map((word, index) => (
                 <span
                   key={index}
                   className="inline-block mr-3"
@@ -108,11 +108,11 @@ const CTA = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => window.open('tel:+15095550123', '_self')}
+                onClick={() => window.open('https://wa.me/97152898823', '_blank')}
                 className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 gap-2 px-8 py-6 text-lg font-semibold rounded-full transition-all duration-300"
               >
                 <Phone className="w-5 h-5" />
-                Call Us Now
+                WhatsApp Us
               </Button>
             </div>
           </div>
