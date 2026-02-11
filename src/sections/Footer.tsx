@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Apple, MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, ArrowRight, Send } from 'lucide-react';
+import { MapPin, Mail, Facebook, Instagram, Twitter, Linkedin, ArrowRight, Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -108,7 +108,7 @@ const Footer = () => {
                 transition: 'all 0.5s var(--ease-smooth-glide) 0.3s',
               }}
             >
-              Get updates on new varieties, seasonal specials, and industry news.
+              Get updates on new products, seasonal specials, and industry news.
             </p>
             
             <form 
@@ -154,13 +154,15 @@ const Footer = () => {
               }}
             >
               <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }} className="flex items-center gap-2 mb-6">
-                <div className="p-2 rounded-xl bg-gradient-red">
-                  <Apple className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xl font-bold text-white font-['Poppins']">AppleKing</span>
+                <img
+                  src="/images/hayat-logo.png"
+                  alt="Hayat HSC"
+                  className="h-10 w-auto"
+                />
+                <span className="text-xl font-bold text-white font-['Poppins']">Hayat HSC</span>
               </a>
               <p className="text-[var(--apple-medium-gray)] mb-6 leading-relaxed">
-                Your trusted partner for premium apples worldwide. Quality, freshness, and reliability in every bite.
+                Your trusted partner for premium fresh fruits and vegetables. Quality, freshness, and reliability in every delivery.
               </p>
               
               {/* Social Links */}
@@ -239,7 +241,7 @@ const Footer = () => {
             <div>
               <h4 className="text-white font-bold mb-6">Contact Us</h4>
               <ul className="space-y-4">
-                <li 
+                <li
                   className="flex items-start gap-3 text-[var(--apple-medium-gray)]"
                   style={{
                     opacity: isVisible ? 1 : 0,
@@ -248,9 +250,11 @@ const Footer = () => {
                   }}
                 >
                   <MapPin className="w-5 h-5 text-[var(--apple-red)] flex-shrink-0 mt-0.5" />
-                  <span>123 Orchard Lane, Wenatchee, WA 98801</span>
+                  <a href="https://maps.app.goo.gl/ppSyLhxh3uJ1K7KW6?g_st=iwb" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">
+                    View on Google Maps
+                  </a>
                 </li>
-                <li 
+                <li
                   className="flex items-center gap-3 text-[var(--apple-medium-gray)]"
                   style={{
                     opacity: isVisible ? 1 : 0,
@@ -258,12 +262,12 @@ const Footer = () => {
                     transition: 'all 0.3s var(--ease-smooth-glide) 0.58s',
                   }}
                 >
-                  <Phone className="w-5 h-5 text-[var(--apple-red)] flex-shrink-0" />
-                  <a href="tel:+15095550123" className="hover:text-white transition-colors duration-200">
-                    +1 (509) 555-0123
+                  <MessageCircle className="w-5 h-5 text-[var(--apple-green)] flex-shrink-0" />
+                  <a href="https://wa.me/97152898823" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-200">
+                    +97152-8988232
                   </a>
                 </li>
-                <li 
+                <li
                   className="flex items-center gap-3 text-[var(--apple-medium-gray)]"
                   style={{
                     opacity: isVisible ? 1 : 0,
@@ -272,8 +276,8 @@ const Footer = () => {
                   }}
                 >
                   <Mail className="w-5 h-5 text-[var(--apple-red)] flex-shrink-0" />
-                  <a href="mailto:hello@appleking.com" className="hover:text-white transition-colors duration-200">
-                    hello@appleking.com
+                  <a href="mailto:Hello@hayathsc.com" className="hover:text-white transition-colors duration-200">
+                    Hello@hayathsc.com
                   </a>
                 </li>
               </ul>
@@ -289,7 +293,7 @@ const Footer = () => {
             }}
           >
             <p className="text-[var(--apple-medium-gray)] text-sm">
-              © 2024 AppleKing. All rights reserved.
+              © 2024 Hayat HSC. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-[var(--apple-medium-gray)] text-sm hover:text-white transition-colors duration-200">

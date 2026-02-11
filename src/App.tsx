@@ -5,6 +5,7 @@ import About from './sections/About';
 import Products from './sections/Products';
 import Stats from './sections/Stats';
 import Testimonials from './sections/Testimonials';
+import Clients from './sections/Clients';
 import CTA from './sections/CTA';
 import Footer from './sections/Footer';
 
@@ -19,6 +20,7 @@ function App() {
         <Products />
         <Stats />
         <Testimonials />
+        <Clients />
         <CTA />
       </main>
       <Footer />

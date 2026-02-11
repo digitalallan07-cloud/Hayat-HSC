@@ -86,7 +86,7 @@ const Products = () => {
                 transition: 'all 0.6s var(--ease-smooth-glide)',
               }}
             >
-              Our Apple Varieties
+              Our Products
             </h2>
             <p 
               className="text-lg text-[var(--apple-medium-gray)] max-w-xl"
@@ -96,7 +96,7 @@ const Products = () => {
                 transition: 'all 0.6s var(--ease-smooth-glide) 0.1s',
               }}
             >
-              Discover the perfect apple for every taste and occasion
+              Discover premium fresh produce for every need
             </p>
           </div>
           

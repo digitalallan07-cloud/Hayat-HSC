@@ -67,7 +67,7 @@ const Stats = () => {
       icon: Apple,
       value: counters.apples,
       suffix: 'M+',
-      label: 'Apples Delivered',
+      label: 'Products Delivered',
     },
     {
       icon: ThumbsUp,
