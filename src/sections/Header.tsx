@@ -18,7 +18,6 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Our Orchard', href: '#vision' },
-    { name: 'Products', href: '#products' },
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -47,11 +46,6 @@ const Header = () => {
             onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
             className="flex items-center gap-3 group"
           >
-            <img
-              src="/images/hayat-logo.png"
-              alt="Hayat HSC"
-              className="h-10 w-auto"
-            />
             <div className="flex flex-col">
               <span className={`text-xl font-heading font-semibold tracking-wide transition-colors duration-300 ${
                 isScrolled ? 'text-[var(--hayat-green-dark)]' : 'text-white'

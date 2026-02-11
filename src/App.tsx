@@ -2,7 +2,7 @@ import Header from './sections/Header';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import VisionMission from './sections/VisionMission';
-import Products from './sections/Products';
+
 import Services from './sections/Services';
 import Stats from './sections/Stats';
 import Gallery from './sections/Gallery';
@@ -19,7 +19,7 @@ function App() {
         <Hero />
         <About />
         <VisionMission />
-        <Products />
+
         <Services />
         <Stats />
         <Gallery />

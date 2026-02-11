@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const HERO_IMAGE = 'https://drive.google.com/thumbnail?id=1uqiWOTsov6FmBdxSGFVrQdlRMEN8ZF2q&sz=w1920';
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1574856344991-aaa31b6f4ce3?w=1920&q=80&auto=format&fit=crop';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -94,7 +94,7 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              onClick={() => scrollToSection('#products')}
+              onClick={() => scrollToSection('#vision')}
               className="bg-[var(--hayat-red)] hover:bg-[var(--hayat-red-dark)] text-white gap-2 px-10 py-6 text-sm font-sans-elegant uppercase tracking-[0.15em] rounded-none transition-all duration-300 hover:shadow-lg group"
             >
               Explore Our Harvest
