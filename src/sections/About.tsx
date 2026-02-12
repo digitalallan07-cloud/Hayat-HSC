@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const ABOUT_IMAGE = 'https://drive.google.com/thumbnail?id=1tyhSTY-O-EOtzFBmHlu5vHhXc0eUT8xO&sz=w1200';
+const ABOUT_IMAGE = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/Smiling%20farmer%20with%20fresh%20apples.png';
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

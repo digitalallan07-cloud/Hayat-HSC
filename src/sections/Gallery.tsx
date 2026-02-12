@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 const galleryImages = [
   {
-    src: 'https://drive.google.com/thumbnail?id=1uqiWOTsov6FmBdxSGFVrQdlRMEN8ZF2q&sz=w800',
+    src: 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/Golden%20orchard%20at%20sunset.png',
     alt: 'Hayat HSC Orchard Landscape',
     span: 'col-span-2 row-span-2',
   },
   {
-    src: 'https://drive.google.com/thumbnail?id=1tyhSTY-O-EOtzFBmHlu5vHhXc0eUT8xO&sz=w600',
+    src: 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/new%20file2_page-0001.jpg',
     alt: 'Apple Harvest Season',
     span: 'col-span-1 row-span-1',
   },

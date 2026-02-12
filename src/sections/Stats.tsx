@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-const STATS_BG = 'https://drive.google.com/thumbnail?id=1Eg6zinbaCO9tVnCUXrMQk2o_0_iYpY58&sz=w1920';
+const STATS_BG = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/ChatGPT%20Image%20Feb%2012,%202026,%2002_15_18%20AM.png';
 
 const Stats = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
