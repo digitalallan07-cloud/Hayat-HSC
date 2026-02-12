@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const CTA_IMAGE = 'https://drive.google.com/thumbnail?id=1Z7dlPiD2rxLML5KiSOm00Nr-VzY-CCZ2&sz=w1920';
+const CTA_IMAGE = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/ChatGPT%20Image%20Feb%2012,%202026,%2002_17_10%20AM.png';
 
 const CTA = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

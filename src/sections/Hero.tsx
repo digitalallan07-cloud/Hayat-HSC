@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1574856344991-aaa31b6f4ce3?w=1920&q=80&auto=format&fit=crop';
+const HERO_IMAGE = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/apple%20cover%20pic.png';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
