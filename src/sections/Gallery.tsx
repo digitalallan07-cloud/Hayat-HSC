@@ -12,17 +12,17 @@ const galleryImages = [
     span: 'col-span-1 row-span-1',
   },
   {
-    src: 'https://drive.google.com/thumbnail?id=1649WdJ1AqoR5gUfAXYXp_Aad3NAd9-Tw&sz=w600',
+    src: '/images/apple-honeycrisp.jpg',
     alt: 'Our Apple Trees',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: 'https://drive.google.com/thumbnail?id=1Eg6zinbaCO9tVnCUXrMQk2o_0_iYpY58&sz=w600',
+    src: '/images/apple-fuji.jpg',
     alt: 'Fresh Red Apples',
     span: 'col-span-1 row-span-1',
   },
   {
-    src: 'https://drive.google.com/thumbnail?id=1Z7dlPiD2rxLML5KiSOm00Nr-VzY-CCZ2&sz=w800',
+    src: '/images/apple-gala.jpg',
     alt: 'Apple Farm Operations',
     span: 'col-span-1 row-span-1',
   },
@@ -92,6 +92,7 @@ const Gallery = () => {
               <img
                 src={image.src}
                 alt={image.alt}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-[var(--hayat-green-dark)]/0 group-hover:bg-[var(--hayat-green-dark)]/30 transition-all duration-300" />

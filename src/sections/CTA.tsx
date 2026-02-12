@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const CTA_IMAGE = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/ChatGPT%20Image%20Feb%2012,%202026,%2002_17_10%20AM.png';
+const CTA_IMAGE = '/images/cta-apples.png';
 
 const CTA = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ const CTA = () => {
     <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center lg:bg-fixed"
         style={{ backgroundImage: `url('${CTA_IMAGE}')` }}
       />
       <div className="absolute inset-0 bg-[var(--hayat-red-dark)]/80" />

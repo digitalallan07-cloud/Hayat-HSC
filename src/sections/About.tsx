@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const ABOUT_IMAGE = 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/Smiling%20farmer%20with%20fresh%20apples.png';
+const ABOUT_IMAGE = '/images/about-orchard.jpg';
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -39,11 +39,12 @@ const About = () => {
               <img
                 src={ABOUT_IMAGE}
                 alt="Hayat HSC Apple Orchard"
-                className="w-full h-[550px] object-cover"
+                loading="lazy"
+                className="w-full h-[350px] sm:h-[450px] lg:h-[550px] object-cover"
               />
             </div>
             {/* Floating Stats */}
-            <div className="absolute -bottom-6 -right-4 lg:right-8 bg-white p-6 shadow-elegant-lg">
+            <div className="absolute -bottom-6 right-2 sm:-right-4 lg:right-8 bg-white p-4 sm:p-6 shadow-elegant-lg">
               <p className="text-4xl font-heading font-semibold text-[var(--hayat-red)]">20+</p>
               <p className="text-sm font-sans-elegant uppercase tracking-wider text-[var(--hayat-gray)] mt-1">Years of Excellence</p>
             </div>
@@ -101,7 +102,7 @@ const About = () => {
 
             {/* Stats Row */}
             <div
-              className="grid grid-cols-3 gap-8 pt-6 border-t border-[var(--hayat-light-gray)]"
+              className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 border-t border-[var(--hayat-light-gray)]"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transition: 'opacity 0.8s var(--ease-power) 0.9s',
