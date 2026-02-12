@@ -53,7 +53,7 @@ const Stats = () => {
     <section ref={sectionRef} className="relative py-24 overflow-hidden">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center lg:bg-fixed"
         style={{ backgroundImage: `url('${STATS_BG}')` }}
       />
       <div className="absolute inset-0 bg-[var(--hayat-green-dark)]/85" />

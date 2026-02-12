@@ -1,4 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { Building2 } from 'lucide-react';
+
+const clients = [
+  'Al Madina Supermarket',
+  'Gulf Fresh Foods',
+  'Desert Oasis Markets',
+  'Emirates Fruit Co.',
+  'Royal Harvest Trading',
+  'Green Valley Exports',
+  'Sunrise Grocers',
+  'Palm Bay Distributors',
+];
 
 const Clients = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -48,19 +60,23 @@ const Clients = () => {
           </div>
         </div>
 
-        <div
-          className="max-w-4xl mx-auto"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'all 0.8s var(--ease-power) 0.3s',
-          }}
-        >
-          <img
-            src="/images/clients-collage.png"
-            alt="Our Trusted Clients"
-            className="w-full shadow-elegant"
-          />
+        <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          {clients.map((client, index) => (
+            <div
+              key={client}
+              className="bg-white p-6 sm:p-8 flex flex-col items-center justify-center gap-3 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: `all 0.6s var(--ease-power) ${0.2 + index * 0.06}s`,
+              }}
+            >
+              <Building2 className="w-8 h-8 text-[var(--hayat-green)] opacity-60" />
+              <p className="text-xs sm:text-sm font-sans-elegant text-[var(--hayat-charcoal)] text-center font-medium leading-tight">
+                {client}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

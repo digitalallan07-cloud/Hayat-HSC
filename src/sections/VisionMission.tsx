@@ -121,6 +121,7 @@ const VisionMission = () => {
                       <img
                         src={item.image}
                         alt={item.title}
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-700"
                         style={{
                           transform: isActive ? 'scale(1.1)' : 'scale(1)',
