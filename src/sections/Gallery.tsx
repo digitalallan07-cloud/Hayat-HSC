@@ -1,30 +1,36 @@
 import { useEffect, useRef, useState } from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel';
 
 const galleryImages = [
   {
+    src: 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/ChatGPT%20Image%20Feb%2012%2C%202026%2C%2009_55_29%20PM.png',
+    alt: 'Hayat HSC Farm',
+  },
+  {
     src: 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/Golden%20orchard%20at%20sunset.png',
     alt: 'Hayat HSC Orchard Landscape',
-    span: 'col-span-2 row-span-2',
   },
   {
     src: 'https://shapesdefined.sirv.com/WP_we-demo.xyz/2023/05/Hayat%20HSC/new%20file2_page-0001.jpg',
     alt: 'Apple Harvest Season',
-    span: 'col-span-1 row-span-1',
   },
   {
     src: '/images/apple-honeycrisp.jpg',
     alt: 'Our Apple Trees',
-    span: 'col-span-1 row-span-1',
   },
   {
     src: '/images/apple-fuji.jpg',
     alt: 'Fresh Red Apples',
-    span: 'col-span-1 row-span-1',
   },
   {
     src: '/images/apple-gala.jpg',
     alt: 'Apple Farm Operations',
-    span: 'col-span-1 row-span-1',
   },
 ];
 
@@ -77,30 +83,37 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[200px] lg:auto-rows-[250px]">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className={`${image.span} relative overflow-hidden group`}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'scale(1)' : 'scale(0.95)',
-                transition: `all 0.6s var(--ease-power) ${0.2 + index * 0.1}s`,
-              }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-[var(--hayat-green-dark)]/0 group-hover:bg-[var(--hayat-green-dark)]/30 transition-all duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-white text-sm font-sans-elegant">{image.alt}</p>
-              </div>
-            </div>
-          ))}
+        {/* Gallery Slider */}
+        <div
+          className="max-w-5xl mx-auto"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+            transition: 'all 0.8s var(--ease-power) 0.3s',
+          }}
+        >
+          <Carousel opts={{ loop: true }} className="w-full">
+            <CarouselContent>
+              {galleryImages.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative overflow-hidden rounded-lg aspect-[16/9] group">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[var(--hayat-green-dark)]/0 group-hover:bg-[var(--hayat-green-dark)]/20 transition-all duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/50 to-transparent">
+                      <p className="text-white text-sm font-sans-elegant">{image.alt}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 bg-white/80 hover:bg-white border-none shadow-lg" />
+            <CarouselNext className="right-4 bg-white/80 hover:bg-white border-none shadow-lg" />
+          </Carousel>
         </div>
       </div>
     </section>
